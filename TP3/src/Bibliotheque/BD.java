@@ -18,5 +18,19 @@ public class BD extends Volume{
         this.dessinateur=dessinateur;
         
     }
+
+    public String getDessinateur() {
+        return dessinateur;
+    }
+
+    public void setDessinateur(String dessinateur) {
+        this.dessinateur = dessinateur;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "===>BD{" + "dessinateur=" + dessinateur + '}';
+    }
+    
     
 }

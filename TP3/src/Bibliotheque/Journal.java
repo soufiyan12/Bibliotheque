@@ -6,25 +6,31 @@
 package Bibliotheque;
 //Les journaux ont (outre les caractéristiques de document) une date de parution (on pourra
 //prendre la classe java.util.Date ou bien construire notre propre classe Date).
-import java.util.Date;
+//import java.util.Date;
 /**
  *
  * @author soufiyan
  */
 public class Journal extends Document {
     
-    private Date d;
-    public Journal(String titre,int year, int month, int date){
+    private int year ; int month ; int day;
+    //private Date d;
+    public Journal(String titre,int day, int month, int year){
         super(titre);
-        Date.UTC(year, month, date, date, month, year);
+       // d=new Date();
+       this.day=day;
+       this.month=month;
+       this.year=year;      
     }
        
     //date de parution 
 
     @Override
     public String toString() {
-        return "Journal{" + "date=" + d + '}' ;
+        return super.toString() + " ===> Journal{" + "" + year + "/" + month + "/" + day + '}';
     }
+
+  
    
     
     

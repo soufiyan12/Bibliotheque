@@ -9,21 +9,30 @@ package Bibliotheque;
  *
  * @author soufiyan
  */
+import java.util.ArrayList;
 import java.util.Vector;
 public class Bibliotheque {
     //La bibliothèque comprend un ensemble de documents et un ensemble d'adhérents
     private Vector<Document> D;
     private Vector<Adherent> A;
-    
+   
+    //D=new Vector<Document>();
+        //A=new Vector<Adherent>();
+    //D=new Vector<Document>();
     /*
     Définir des méthodes toString
 permettant de visualiser ces objets convenablement
     */
 
-    @Override
-    public String toString() {
-        return "Bibliotheque{" + "D=" + D + ", A=" + A + '}';
+    public Bibliotheque() {
+        D=new Vector<Document>();
+        A=new Vector<Adherent>();
+       //D.sort
     }
+
+    
+    
+    
     
     /*
     Ecrire les méthodes ajouterAdherent 
@@ -32,59 +41,63 @@ permettant de visualiser ces objets convenablement
     
     public void ajouterAdherent(Adherent ad){
         
-        A.addElement(ad);
+        A.add(ad);
         
         /*
         code .......
         */
     }
     public void ajouterDocument(Document doc){
-        D.addElement(doc);
+        D.add(doc);
         
         /*
         ..........
         */
     }
         
-        
+    /**
+     *
+     * @param titre
+     * @return
+     */
+    public ArrayList<String> chercherDocument(String titre){
+     /*
+       public Document[] chercherDocument(String titre){
+      */
+     //Document[] tap=new Document[j];
+      ArrayList<Document> tapp= new ArrayList<Document>();
+      int j=0;//taille de list tapp
+      for(int i=0;i<D.size();i++){
+          if(D.indexOf(i)!=-1){
+              tapp.add(D.indexOf(i));
+              System.out.println("");
+              j++;
+          }
+      }
+      if(j==0){
+          System.out.println("ce document n'exite pas dans notre biblio");
+      }
        
-        public static void main(String[] args){
+      
+      
+      
+      return tapp;
+  }  
+  /*
+  String[] colours = { "Red", "Orange", "Yellow", "Green" };
 
-        Bibliotheque bibli = new Bibliotheque();
+int indexOfYellow = ArrayUtils.indexOf(colours, "Yellow");
+  public static <T> int indexOf(T needle, T[] haystack)
+{
+    for (int i=0; i<haystack.length; i++)
+    {
+        if (haystack[i] != null && haystack[i].equals(needle)
+            || needle == null && haystack[i] == null) return i;
+    }
 
-        Adherent ad = new Adherent("Jean", "Dupond");
-
-        bibli.ajouterAdherent(ad);
-
-        ad = new Adherent("Marie","Dubois");
-
-        bibli.ajouterAdherent(ad);
-
-        int n=4;
-
-        Document[] docs = new Document[n];
-
-        docs[0] = new Livre("Misérables","Hugo V.");
-
-        docs[1] = new Journal("Dr Dobbs",05,10,2003);
-
-        // 10 représente le mois de septembre
-
-        docs[2] = new BD("Thorgal: La galère noire","Van Hamme",
-
-        "Rosinsky");
-
-        docs[3] = new Livre("Systèmes multi-agents","Ferber J.");
-
-        for (int i=0;i<n;i++ ){
-
-        System.out.println("document "+docs[i]);
-
-        bibli.ajouterDocument(docs[i]);
+    return -1;
 }
-}
-       
-    
+  */
     
     /*
     Dans la classe Bibliothèque, donnez le code de la méthode

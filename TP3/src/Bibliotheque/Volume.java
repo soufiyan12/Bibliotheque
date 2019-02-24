@@ -18,5 +18,19 @@ public class Volume extends Document {
         super(titre);
         this.auteur=auteur;
     }
+
+    public String getAuteur() {
+        return auteur;
+    }
+
+    public void setAuteur(String auteur) {
+        this.auteur = auteur;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "===>Volume{" + "auteur=" + auteur + '}';
+    }
+    
     
 }

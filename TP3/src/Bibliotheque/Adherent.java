@@ -15,6 +15,8 @@ public class Adherent {
     //Les adhérents ont un prénom (chaîne de caractère) et un nom (chaîne aussi).
     private String prenom;
     private String nom;
+    private long IdAdherent;
+    private static long cmp;
     
     //stocker les livres emprunter dans un endroit particulier
     ArrayList<Document> stock=new ArrayList<Document>();
@@ -23,7 +25,7 @@ public class Adherent {
     
     //disponibilite du livre 1 or 0
     //Attention: un livre ne peut être emprunté que s'il n'est pas déjà emprunté par un adhérent.
-    private boolean disponible;
+   
     
     /*
     Les adhérents peuvent emprunter des livres (et uniquement des livres) et on doit pouvoir
@@ -32,16 +34,25 @@ savoir à tout moment quels sont les livres empruntés par un adhérent.
     public Adherent(String prenom,String nom){
         this.prenom=prenom;
         this.nom=nom;
+        this.IdAdherent=cmp++;
     }
     
-    public void emprunter(Livre l){
+    public void emprunter(Document d){
         
-        if(l.empruntable()){
-            System.out.println("livre existe ");
+        if(d.empruntable()){
+            
+            Livre l=(Livre) d; 
+            if(l.getDisponible()){
+            System.out.println("livre empruntable et disponible ");
             stock.add(l);
-            System.out.println("le livre emprunter est " + l.toString());
-        }else{
-            System.out.println("livre dont exist ");
+            System.out.println("le livre emprunter est " + l.toString()+"par "+this.toString());
+            l.setDisponible(false);
+            }else{
+                System.out.println("livre demande not exist pr le moment ");
+            }
+            
+            }else{
+            System.out.println("ce Document n'est pas empruntable ");
         }
         /*
         .....
@@ -50,7 +61,11 @@ savoir à tout moment quels sont les livres empruntés par un adhérent.
         
     }
     
-    public void rendre(Livre l){
+    public void rendre(Document d){
+        Livre l=(Livre) d;//casting
+        
+        stock.remove(l);
+        l.setDisponible(true);
         
         /*
         ......
@@ -65,6 +80,11 @@ Adhérent, ces méthodes sont définies ainsi:
 void emprunter(Livre l){...} void rendre(Livre l){...}
 Attention: un livre ne peut être emprunté que s'il n'est pas déjà emprunté par un adhérent.
     */
+
+    @Override
+    public String toString() {
+        return "Adherent{" + "prenom=" + prenom + ", nom=" + nom + ", stock=" + stock +", idAdherent =" + IdAdherent + '}';
+    }
     
     
     
