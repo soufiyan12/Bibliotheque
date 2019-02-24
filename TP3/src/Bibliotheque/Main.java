@@ -58,7 +58,18 @@ public class Main {
         System.out.println("===>"+ad2);
         //ad2.rendre(docs[0]);
         //System.out.println("===>"+ad2);
-        bibli.chercherDocument("Dr Dobbs");
+        
+        
+        
+        
+        
+        System.out.println("\n\n\n\nResultats de la recherche :\n");
+        int j=0;
+        Document[] Resultat=bibli.chercherDocument("Dr Dobbs");
+        while(Resultat[j]!=null){
+            System.out.println(Resultat[j++]);
+        }
+        
         
 }
 }

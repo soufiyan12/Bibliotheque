@@ -9,7 +9,7 @@ package Bibliotheque;
  *
  * @author soufiyan
  */
-import java.util.ArrayList;
+
 import java.util.Vector;
 public class Bibliotheque {
     //La bibliothèque comprend un ensemble de documents et un ensemble d'adhérents
@@ -60,29 +60,21 @@ permettant de visualiser ces objets convenablement
      * @param titre
      * @return
      */
-    public ArrayList<String> chercherDocument(String titre){
-     /*
-       public Document[] chercherDocument(String titre){
-      */
-     //Document[] tap=new Document[j];
-      ArrayList<Document> tapp= new ArrayList<Document>();
-      int j=0;//taille de list tapp
-      for(int i=0;i<D.size();i++){
-          if(D.indexOf(i)!=-1){
-              tapp.add(D.indexOf(i));
-              System.out.println("");
-              j++;
-          }
-      }
-      if(j==0){
-          System.out.println("ce document n'exite pas dans notre biblio");
-      }
-       
-      
-      
-      
-      return tapp;
-  }  
+    public Document[] chercherDocument(String titre){
+        Document[] Res = new Document[D.size()];
+        int j=0; // Indices of &
+        for(int i=0;i<D.size();i++){
+            if (D.get(i).getTitre().indexOf(titre)!=-1){
+                Res[j++]=D.get(i);
+            }
+        }
+        
+        
+        return Res;
+    }
+    
+}
+     
   /*
   String[] colours = { "Red", "Orange", "Yellow", "Green" };
 
@@ -112,4 +104,3 @@ chaîne courante.
     
     
     
-}
