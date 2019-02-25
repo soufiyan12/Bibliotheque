@@ -7,7 +7,7 @@ package Bibliotheque;
 
 /**
  *
- * @author soufiyan
+ * @author Adnane & Soufiyan
  */
 public class Main {
     
@@ -69,6 +69,10 @@ public class Main {
         while(Resultat[j]!=null){
             System.out.println(Resultat[j++]);
         }
+        
+        
+        // Testint Biblio toString :
+        System.out.println("\n\n\n\n\n\n" + bibli);
         
         
 }

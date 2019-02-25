@@ -10,6 +10,7 @@ package Bibliotheque;
  * @author soufiyan
  */
 
+import java.util.Iterator;
 import java.util.Vector;
 public class Bibliotheque {
     //La bibliothèque comprend un ensemble de documents et un ensemble d'adhérents
@@ -71,6 +72,31 @@ permettant de visualiser ces objets convenablement
         
         
         return Res;
+    }
+    
+    
+    @Override
+    public String toString(){
+        String Return=" ########        Liste des Documents :  ######## \n\n";
+        Iterator<Document> i= D.iterator();
+        
+        while(i.hasNext()){
+            Return += i.next() + "\n";   // Iterator.next() => returns the current Object, and points to the next one in the Vector
+        }
+        
+        
+        Return += "\n\n #######        Liste des Adherents : ######### \n\n";
+        
+        
+        
+        Iterator<Adherent> j= A.iterator();
+        
+        while(i.hasNext()){
+            Return += i.next() + "\n";   // Iterator.next() => returns the current Object, and points to the next one in the Vector
+        }
+        
+        
+        return Return;
     }
     
 }
