@@ -31,10 +31,6 @@ permettant de visualiser ces objets convenablement
        //D.sort
     }
 
-    
-    
-    
-    
     /*
     Ecrire les méthodes ajouterAdherent 
     et ajouterDocument dans Bibliotheque.
@@ -61,17 +57,25 @@ permettant de visualiser ces objets convenablement
      * @param titre
      * @return
      */
-    public Document[] chercherDocument(String titre){
-        Document[] Res = new Document[D.size()];
-        int j=0; // Indices of &
+    public Vector<Document> chercherDocument(String titre){
+        Vector<Document> V = new Vector<Document>();
         for(int i=0;i<D.size();i++){
             if (D.get(i).getTitre().indexOf(titre)!=-1){
-                Res[j++]=D.get(i);
+               V.add(D.get(i));
             }
         }
+ 
+        return V;
+    }
+    
+    
+    public void listerDocuments(){
+        System.out.println("########        Liste des Documents :  ######## \n\n");
         
-        
-        return Res;
+        for(int i=0;i<D.size();i++){
+            System.out.println(D.get(i));
+            
+        }
     }
     
     
@@ -85,19 +89,22 @@ permettant de visualiser ces objets convenablement
         }
         
         
-        Return += "\n\n #######        Liste des Adherents : ######### \n\n";
+        Return += "\n\n #######        Liste des Adherents Inscrits à la bibliothèque : ######### \n\n";
         
         
         
         Iterator<Adherent> j= A.iterator();
         
-        while(i.hasNext()){
-            Return += i.next() + "\n";   // Iterator.next() => returns the current Object, and points to the next one in the Vector
+        while(j.hasNext()){
+            Return += j.next() + "\n";   // Iterator.next() => returns the current Object, and points to the next one in the Vector
         }
         
         
         return Return;
     }
+    
+    
+    
     
 }
      

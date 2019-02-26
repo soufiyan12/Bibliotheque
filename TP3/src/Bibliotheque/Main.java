@@ -5,12 +5,14 @@
  */
 package Bibliotheque;
 
+import java.util.Iterator;
+import java.util.Vector;
+
 /**
  *
  * @author Adnane & Soufiyan
  */
 public class Main {
-    
      public static void main(String[] args){
 
         Bibliotheque bibli = new Bibliotheque();
@@ -54,7 +56,7 @@ public class Main {
         //ad1.rendre(docs[0]);
         //System.out.println("===>"+ad1);
          
-        ad2.emprunter(docs[0]);
+        ad2.emprunter(docs[3]);
         System.out.println("===>"+ad2);
         //ad2.rendre(docs[0]);
         //System.out.println("===>"+ad2);
@@ -65,15 +67,31 @@ public class Main {
         
         System.out.println("\n\n\n\nResultats de la recherche :\n");
         int j=0;
-        Document[] Resultat=bibli.chercherDocument("Dr Dobbs");
-        while(Resultat[j]!=null){
-            System.out.println(Resultat[j++]);
+        Vector<Document> Resultat=bibli.chercherDocument("zzz");
+        Iterator i =Resultat.iterator();
+        if(!i.hasNext()) System.out.println("Aucune occurence de cette sous chaine dans les documents \n");
+        while(i.hasNext()){
+            System.out.println(i.next());
         }
+       
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         // Testint Biblio toString :
         System.out.println("\n\n\n\n\n\n" + bibli);
         
+        new Home().setVisible(true);
+        
+        
+        //Home home=new Home();
+        //home.setVisible(true);
         
 }
 }

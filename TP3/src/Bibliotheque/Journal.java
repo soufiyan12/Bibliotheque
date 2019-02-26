@@ -11,7 +11,7 @@ package Bibliotheque;
  *
  * @author soufiyan
  */
-public class Journal extends Document {
+public final class Journal extends Document {
     
     private int year ; int month ; int day;
     //private Date d;
@@ -27,7 +27,7 @@ public class Journal extends Document {
 
     @Override
     public String toString() {
-        return super.toString() + " ===> Journal{" + "" + year + "/" + month + "/" + day + '}';
+        return super.toString() + ",   Date de parution du journal :" + year + "/" + month + "/" + day + '}';
     }
 
   

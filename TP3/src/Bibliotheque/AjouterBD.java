@@ -36,7 +36,7 @@ public class AjouterBD extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         jLabel1.setText("Ajouter une BD en remplissant les champs çi dessous");
@@ -53,6 +53,11 @@ public class AjouterBD extends javax.swing.JFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Acer V5\\Desktop\\Pics\\save.png")); // NOI18N
         jButton1.setText("Sauvegarder");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Nom de dessinateur :");
 
@@ -115,6 +120,10 @@ public class AjouterBD extends javax.swing.JFrame {
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

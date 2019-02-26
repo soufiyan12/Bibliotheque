@@ -5,32 +5,38 @@
  */
 package Bibliotheque;
 
+import java.util.Vector;
+
 /**
  *
  * @author soufiyan
  */
-public class Livre extends Volume implements Comparable {
+public class Livre extends Volume {
     //Seuls les livres sont empruntables.
    private float prix;
     private long isbn;
     //String uniqueID = UUID.randomUUID().toString();
     private static int nb_livre=1;
     private boolean disponible;//verifie  la disponibilite du livre car peut etre emprunter par un adherent qlconq
+    private long IDAdherent;
     
       public Livre(String auteur,String titre){
         super(titre,auteur);
         this.disponible=true;
         this.isbn=nb_livre ++;
-        
+        IDAdherent=0;
         
     }
 
-      public boolean getDisponible(){
-          return disponible;
-      }
-    public void setDisponible(boolean disponible) {
-        this.disponible = disponible;
+    public boolean getDisponible(){
+        if(this.IDAdherent==0) return true;
+        else return false;
     }
+
+    public long getIDAdherent() {
+        return IDAdherent;
+    }
+
    
       
    // si empruntable return true sinon return false 
@@ -41,26 +47,30 @@ public class Livre extends Volume implements Comparable {
         */
         return true;
     }
+    
+    
+    public void setIDAdherent(long ID){
+        this.IDAdherent=ID;
+    }
 
     @Override
     public String toString() {
-        return super.toString()+ "===> Livre {" +" International Standard Book Number ===>"+isbn+"}";
+        return super.toString() + " International Standard Book Number : "+isbn + (this.empruntable()?" Ce livre est disponible ":(" Ce livre est emprunté par l'adherent : " + this.IDAdherent));
     }
 // appel method sort base sur  critere qui dans cette methode par example on met une condition sur le prix du livre  
-    @Override
-    public int compareTo(Object o) {
-        //if(o isInstanceOf livre )
-    if(this.prix>((Livre)o).prix){
-        return 1;
-    }else
-        if(this.prix<((Livre)o).prix){
-            return -1;
-        
-    }else{
-            return 0;
-        }
     
-    }
+  /*
+    if(D.get(i).getClass().getName()=="Livre"){
+                if(((Livre) D.get(i)).getDisponible()==true) {
+                    System.out.println("Ce document est emprunté par L'utilisateur dont l'ID est : " + ((Livre) D.get(i)).getIDAdherent());
+                } else System.out.println("Ce Livre est disponible.");
+            }
+    
+    
+    
+    
+    */
+    
 
    
     

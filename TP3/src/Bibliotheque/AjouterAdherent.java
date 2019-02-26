@@ -5,11 +5,17 @@
  */
 package Bibliotheque;
 
+
+import  javax.swing.*;
+
 /**
  *
  * @author Acer V5
  */
 public class AjouterAdherent extends javax.swing.JFrame {
+    Adherent Ad;
+    
+      
 
     /**
      * Creates new form AjouterAdherent
@@ -30,11 +36,11 @@ public class AjouterAdherent extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        Nom = new javax.swing.JTextField();
+        Prenom = new javax.swing.JTextField();
+        SaveButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Ajouter Adherent");
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
@@ -46,15 +52,20 @@ public class AjouterAdherent extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel3.setText("Prenom :");
 
-        jTextField1.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-
-        jTextField2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
-
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Acer V5\\Desktop\\Pics\\save.png")); // NOI18N
-        jButton1.setText("Sauvegarder");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Nom.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        Nom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                NomActionPerformed(evt);
+            }
+        });
+
+        Prenom.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+
+        SaveButton.setIcon(new javax.swing.ImageIcon("C:\\Users\\Acer V5\\Desktop\\Pics\\save.png")); // NOI18N
+        SaveButton.setText("Sauvegarder");
+        SaveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveButtonActionPerformed(evt);
             }
         });
 
@@ -74,11 +85,11 @@ public class AjouterAdherent extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addGap(39, 39, 39)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
-                            .addComponent(jTextField2)))
+                            .addComponent(Nom, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
+                            .addComponent(Prenom)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(304, 304, 304)
-                        .addComponent(jButton1)))
+                        .addComponent(SaveButton)))
                 .addContainerGap(68, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -89,22 +100,40 @@ public class AjouterAdherent extends javax.swing.JFrame {
                 .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Prenom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
-                .addComponent(jButton1)
+                .addComponent(SaveButton)
                 .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+/*
+    private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
+ 
+    }//GEN-LAST:event_SaveButtonActionPerformed
+*/
+    
+    private Adherent SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        if(Nom.getText().isEmpty() || Prenom.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, " Veuillez remplir tout les champs ! ");
+        } else {
+            String nom =Nom.getText().trim();
+            String prenom =Prenom.getText().trim();
+            Ad=new Adherent(prenom,nom);
+            
+        }
+        return Ad;
+    } 
+    
+    
+    private void NomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomActionPerformed
+    
+    }//GEN-LAST:event_NomActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,11 +171,11 @@ public class AjouterAdherent extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField Nom;
+    private javax.swing.JTextField Prenom;
+    private javax.swing.JButton SaveButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

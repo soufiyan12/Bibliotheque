@@ -39,7 +39,7 @@ public  class Document {
 
     @Override
     public String toString() {
-        return "Document{" + "titre=" + titre + '}';
+        return "titre=" + titre;
     }
     
     

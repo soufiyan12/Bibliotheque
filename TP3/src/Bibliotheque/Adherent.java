@@ -18,7 +18,7 @@ public class Adherent {
     private long IdAdherent;
     private static long cmp;
     
-    //stocker les livres emprunter dans un endroit particulier
+    //stocker les livres empruntés dans un endroit particulier
     ArrayList<Document> stock=new ArrayList<Document>();
     
     //class ArrayList ========/////======class Vector
@@ -31,6 +31,7 @@ public class Adherent {
     Les adhérents peuvent emprunter des livres (et uniquement des livres) et on doit pouvoir
 savoir à tout moment quels sont les livres empruntés par un adhérent.
     */
+    
     public Adherent(String prenom,String nom){
         this.prenom=prenom;
         this.nom=nom;
@@ -41,19 +42,19 @@ savoir à tout moment quels sont les livres empruntés par un adhérent.
         
         if(d.empruntable()){
             
-            Livre l=(Livre) d; 
-            if(l.getDisponible()){
-            System.out.println("livre empruntable et disponible ");
-            stock.add(l);
-            System.out.println("le livre emprunter est " + l.toString()+"par "+this.toString());
-            l.setDisponible(false);
+            //Livre l=(Livre) d; 
+            if(((Livre)d).getDisponible()){
+                System.out.println("livre empruntable et disponible ");
+                ((Livre) d).setIDAdherent(this.IdAdherent);
+                stock.add(((Livre) d));
+                System.out.println("le livre emprunter est " + ((Livre) d).toString()+"par "+this.toString());
             }else{
                 System.out.println("livre demande not exist pr le moment ");
             }
             
             }else{
-            System.out.println("ce Document n'est pas empruntable ");
-        }
+                System.out.println("ce Document n'est pas empruntable ");
+            }
         /*
         .....
         
@@ -62,10 +63,14 @@ savoir à tout moment quels sont les livres empruntés par un adhérent.
     }
     
     public void rendre(Document d){
-        Livre l=(Livre) d;//casting
+       
+        if(d.getClass().getName()=="Livre"){
+            stock.remove(d);
+            ((Livre) d).setIDAdherent(0);
+        } else {
+            System.out.println("Erreur, Le document n'est pas empruntable !! ");
+        }
         
-        stock.remove(l);
-        l.setDisponible(true);
         
         /*
         ......
@@ -83,7 +88,7 @@ Attention: un livre ne peut être emprunté que s'il n'est pas déjà emprunté 
 
     @Override
     public String toString() {
-        return "Adherent{" + "prenom=" + prenom + ", nom=" + nom + ", stock=" + stock +", idAdherent =" + IdAdherent + '}';
+        return "prenom=" + prenom + ", nom=" + nom +", idAdherent =" + IdAdherent+ ", stock=" + stock;
     }
     
     

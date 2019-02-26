@@ -29,7 +29,7 @@ public class Volume extends Document {
 
     @Override
     public String toString() {
-        return super.toString() + "===>Volume{" + "auteur=" + auteur + '}';
+        return super.toString() + ",   auteur= " + auteur + '}';
     }
     
     
